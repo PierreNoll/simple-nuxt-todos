@@ -10,6 +10,10 @@ export const mutations = {
   },
   ADD_TODO(state, todo) {
     state.todos.push(todo)
+  },
+  RM_TODO(state, todoId) {
+    const indexToDelete = state.todos.findIndex(o => o.id === todoId)
+    state.todos.splice(indexToDelete, 1)
   }
 }
 
@@ -32,5 +36,13 @@ export const actions = {
       ...todo,
       id: id
     })
+  },
+  async removeTodo({ commit }, todoId) {
+    try {
+      await this.$axios.$delete('http://localhost:3001/todos/' + todoId)
+    } catch (e) {
+      throw e
+    }
+    commit('RM_TODO', todoId)
   }
 }
