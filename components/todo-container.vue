@@ -2,6 +2,10 @@
 <v-card>
   <v-toolbar card color="blue-grey" dark>
     <v-toolbar-title>Todos</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn icon @click="setDialog(true)">
+      <v-icon>add</v-icon>
+    </v-btn>
   </v-toolbar>
   <v-card-text>
     <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
@@ -13,12 +17,19 @@
 import {
   mapState
 } from 'vuex'
+import {
+  mapActions
+} from 'vuex'
 import TodoItem from '@/components/todo-item.vue'
 export default {
   components: {
     TodoItem
   },
-  computed: mapState('todo', ['todos'])
+  computed: mapState('todo', ['todos']),
+  methods: {
+    ...mapActions('todo', ['createTodo']),
+    ...mapActions(['setDialog'])
+  }
 }
 </script>
 
