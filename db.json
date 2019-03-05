@@ -12,6 +12,10 @@
       "id": 3,
       "value": "commencer le test clementine",
       "status": "done"
+    }, {
+      "id": 4,
+      "value": "faire le ménage",
+      "status": "done"
     }
   ]
 }
