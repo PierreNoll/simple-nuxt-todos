@@ -25,12 +25,8 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import {
-  mapActions
-} from 'vuex'
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -44,7 +40,8 @@ export default {
   methods: {
     ...mapActions(['setDialog']),
     async onSave() {
-      if (this.currentTodo.id) { // si l'id est defini alors il s'agit d'un update
+      if (this.currentTodo.id) {
+        // si l'id est defini alors il s'agit d'un update
         try {
           await this.$store.dispatch('todo/updateTodo', {
             id: this.currentTodo.id,
@@ -55,7 +52,8 @@ export default {
           throw e
         }
         this.setDialog(false)
-      } else { // sinon il s'agit d'un nouveau todo
+      } else {
+        // sinon il s'agit d'un nouveau todo
         try {
           await this.$store.dispatch('todo/createTodo', {
             status: 'not-done',

@@ -16,9 +16,7 @@
 </template>
 
 <script>
-import {
-  mapActions
-} from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -44,11 +42,13 @@ export default {
     },
     async updateStatus() {
       //this.status = status
-      this.$store.dispatch('todo/setCurrentTodo', { ...this.todo,
+      this.$store.dispatch('todo/setCurrentTodo', {
+        ...this.todo,
         status: this.status
       })
       try {
-        await this.$store.dispatch('todo/updateTodo', { ...this.todo,
+        await this.$store.dispatch('todo/updateTodo', {
+          ...this.todo,
           status: this.todo.status === 'done' ? 'not-done' : 'done'
         })
       } catch (e) {

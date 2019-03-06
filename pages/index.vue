@@ -14,10 +14,8 @@ export default {
     TodoContainer,
     ModalForm
   },
-  async fetch({
-    store
-  }) {
-    await store.dispatch('todo/fetchTodos');
-  },
+  async fetch({ store }) {
+    await store.dispatch('todo/fetchTodos')
+  }
 }
 </script>

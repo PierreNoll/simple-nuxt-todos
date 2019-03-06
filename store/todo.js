@@ -34,6 +34,7 @@ export const actions = {
     const todos = await this.$axios.$get('http://localhost:3001/todos')
     commit('SET_TODOS', todos)
   },
+
   async createTodo({ commit }, todo) {
     const id = Math.floor(Math.random() * 10000000)
     try {
@@ -49,6 +50,7 @@ export const actions = {
       id: id
     })
   },
+
   async removeTodo({ commit }, todoId) {
     try {
       await this.$axios.$delete('http://localhost:3001/todos/' + todoId)
@@ -60,6 +62,7 @@ export const actions = {
   setCurrentTodo({ commit }, todo) {
     commit('SET_CURRENT_TODO', todo)
   },
+
   async updateTodo({ commit }, todo) {
     try {
       await this.$axios.$put('http://localhost:3001/todos/' + todo.id, {

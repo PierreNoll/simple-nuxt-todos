@@ -14,12 +14,8 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import {
-  mapActions
-} from 'vuex'
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 import TodoItem from '@/components/todo-item.vue'
 export default {
   components: {
