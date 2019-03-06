@@ -1,12 +1,18 @@
 # simple-nuxt-todos
 
-> Simple todo list with CRUD actions
+> Simple todo list with CRUD actions and json-server (port:3001)
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
+
+# install json-server globally
+$ npm install -g json-server
+
+# launch json-server on port 3001
+$ json-server --watch db.json --port 3001
 
 # serve with hot reload at localhost:3000
 $ npm run dev
