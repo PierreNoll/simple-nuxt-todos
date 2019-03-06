@@ -16,7 +16,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" flat @click="setDialog(false)">Close</v-btn>
+        <v-btn color="blue darken-1" flat @click="closeModal">Close</v-btn>
         <v-btn color="blue darken-1" flat @click="onSave">Save</v-btn>
       </v-card-actions>
     </v-card>
@@ -51,7 +51,7 @@ export default {
         } catch (e) {
           throw e
         }
-        this.setDialog(false)
+        this.closeModal()
       } else {
         // sinon il s'agit d'un nouveau todo
         try {
@@ -62,8 +62,18 @@ export default {
         } catch (e) {
           throw e
         }
-        this.setDialog(false)
+        this.closeModal()
       }
+    },
+    closeModal() {
+      // refresh the currentTodo with empty values
+      this.$store.dispatch('todo/setCurrentTodo', {
+        id: '',
+        value: '',
+        status: ''
+      })
+      this.newTodo = ''
+      this.setDialog(false)
     }
   }
 }
