@@ -9,6 +9,21 @@ export const state = () => {
   }
 }
 
+export const getters = {
+  todosLength: state => {
+    return state.todos.length
+  },
+  doneTodos: state => {
+    return state.todos.filter(o => o.status === 'done')
+  },
+  doneTodosLength: (state, getters) => {
+    return getters.doneTodos.length
+  },
+  notDoneTodosLength: (state, getters) => {
+    return getters.todosLength - getters.doneTodosLength
+  }
+}
+
 export const mutations = {
   SET_TODOS(state, todos) {
     state.todos = todos
