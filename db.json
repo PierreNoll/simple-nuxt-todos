@@ -1,29 +1,44 @@
 {
   "todos": [
     {
-      "id": 1,
-      "value": "faire les courses",
-      "status": "not-done"
-    },
-    {
-      "value": "faire à manger",
+      "value": "Faire le CRUD en utilisant le store",
       "status": "done",
-      "id": 2
+      "id": 710327
     },
     {
-      "value": "commencer le test clementineee",
+      "value": "Utiliser Vuetifye",
       "status": "done",
-      "id": 3
+      "id": 9482322
     },
     {
-      "value": "faire le ménage",
+      "value": "Respecter la structure nuxt",
+      "status": "done",
+      "id": 7207236
+    },
+    {
+      "value": "Ajouter quelques getters",
+      "status": "done",
+      "id": 2488164
+    },
+    {
+      "value": "Utiliser les helpers de vuex",
+      "status": "done",
+      "id": 6708942
+    },
+    {
+      "value": "Proposer un ordonnancement pour les todos",
       "status": "not-done",
-      "id": 4
+      "id": 7044559
     },
     {
-      "value": "save 34",
+      "value": "Fonctionne avec firefox",
       "status": "done",
-      "id": 4018975
+      "id": 6358521
+    },
+    {
+      "value": "Fonctionne avec Chrome",
+      "status": "done",
+      "id": 3905739
     }
   ]
 }
