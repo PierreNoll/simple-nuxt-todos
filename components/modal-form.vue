@@ -9,7 +9,7 @@
         <v-container grid-list-md>
           <v-layout wrap>
             <v-flex xs12>
-              <v-text-field v-model="newTodo" label="Que voulez-vous faire ?"></v-text-field>
+              <v-text-field :value="currentTodo.value" @input="newTodo = $event" label="Que voulez-vous faire ?"></v-text-field>
             </v-flex>
           </v-layout>
         </v-container>
@@ -17,7 +17,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" flat @click="setDialog(false)">Close</v-btn>
-        <v-btn color="blue darken-1" flat @click="createTodo">Save</v-btn>
+        <v-btn color="blue darken-1" flat @click="onSave">Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -37,19 +37,35 @@ export default {
       newTodo: ''
     }
   },
-  computed: mapState(['dialog']),
+  computed: {
+    ...mapState(['dialog']),
+    ...mapState('todo', ['currentTodo'])
+  },
   methods: {
     ...mapActions(['setDialog']),
-    async createTodo() {
-      try {
-        await this.$store.dispatch('todo/createTodo', {
-          status: 'not-done',
-          value: this.newTodo
-        })
-      } catch (e) {
-        throw e
+    async onSave() {
+      if (this.currentTodo.id) { // si l'id est defini alors il s'agit d'un update
+        try {
+          await this.$store.dispatch('todo/updateTodo', {
+            id: this.currentTodo.id,
+            value: this.newTodo,
+            status: this.currentTodo.status
+          })
+        } catch (e) {
+          throw e
+        }
+        this.setDialog(false)
+      } else { // sinon il s'agit d'un nouveau todo
+        try {
+          await this.$store.dispatch('todo/createTodo', {
+            status: 'not-done',
+            value: this.newTodo
+          })
+        } catch (e) {
+          throw e
+        }
+        this.setDialog(false)
       }
-      this.setDialog(false)
     }
   }
 }

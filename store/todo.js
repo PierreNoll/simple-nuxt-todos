@@ -1,12 +1,24 @@
 export const state = () => {
   return {
-    todos: []
+    todos: [],
+    currentTodo: {
+      id: '',
+      value: '',
+      status: ''
+    }
   }
 }
 
 export const mutations = {
   SET_TODOS(state, todos) {
     state.todos = todos
+  },
+  SET_TODO(state, todo) {
+    const indexToUpdate = state.todos.findIndex(o => o.id === todo.id)
+    state.todos.splice(indexToUpdate, 1, todo)
+  },
+  SET_CURRENT_TODO(state, todo) {
+    state.currentTodo = todo
   },
   ADD_TODO(state, todo) {
     state.todos.push(todo)
@@ -44,5 +56,19 @@ export const actions = {
       throw e
     }
     commit('RM_TODO', todoId)
+  },
+  setCurrentTodo({ commit }, todo) {
+    commit('SET_CURRENT_TODO', todo)
+  },
+  async updateTodo({ commit }, todo) {
+    try {
+      await this.$axios.$put('http://localhost:3001/todos/' + todo.id, {
+        value: todo.value,
+        status: todo.status
+      })
+    } catch (e) {
+      throw e
+    }
+    commit('SET_TODO', todo)
   }
 }

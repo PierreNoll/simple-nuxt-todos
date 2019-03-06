@@ -11,18 +11,18 @@
       "status": "not-done"
     },
     {
-      "id": 3,
-      "value": "commencer le test clementine",
-      "status": "done"
+      "value": "commencer le test clementineee",
+      "status": "done",
+      "id": 3
     },
     {
-      "id": 4,
       "value": "faire le ménage",
-      "status": "done"
+      "status": "done",
+      "id": 4
     },
     {
+      "value": "test3",
       "status": "not-done",
-      "value": "test2",
       "id": 4018975
     }
   ]
