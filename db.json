@@ -6,9 +6,9 @@
       "status": "not-done"
     },
     {
-      "id": 2,
       "value": "faire à manger",
-      "status": "not-done"
+      "status": "done",
+      "id": 2
     },
     {
       "value": "commencer le test clementineee",
@@ -17,12 +17,12 @@
     },
     {
       "value": "faire le ménage",
-      "status": "done",
+      "status": "not-done",
       "id": 4
     },
     {
       "value": "test3",
-      "status": "not-done",
+      "status": "done",
       "id": 4018975
     }
   ]

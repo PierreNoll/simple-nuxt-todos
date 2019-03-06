@@ -1,8 +1,8 @@
 <template>
 <div>
   <v-list-tile>
-    <v-list-tile-action>
-      <v-checkbox v-model="todo.status" false-value="not-done" true-value="done"></v-checkbox>
+    <v-list-tile-action @click.stop.prevent="updateStatus()">
+      <v-checkbox v-model="todo.status" :readonly="true" false-value="not-done" true-value="done"></v-checkbox>
     </v-list-tile-action>
 
     <v-list-tile-content @click.stop.prevent="openUpdate">
@@ -22,7 +22,7 @@ import {
 export default {
   data() {
     return {
-      toggleInput: false,
+      status: ''
     }
   },
   props: {
@@ -31,11 +31,29 @@ export default {
       required: true
     }
   },
+  computed: {
+    isChecked() {
+      return this.todo.status === 'done' ? true : false
+    }
+  },
   methods: {
     ...mapActions('todo', ['removeTodo']),
     openUpdate() {
       this.$store.dispatch('todo/setCurrentTodo', this.todo)
       this.$store.dispatch('setDialog', true)
+    },
+    async updateStatus() {
+      //this.status = status
+      this.$store.dispatch('todo/setCurrentTodo', { ...this.todo,
+        status: this.status
+      })
+      try {
+        await this.$store.dispatch('todo/updateTodo', { ...this.todo,
+          status: this.todo.status === 'done' ? 'not-done' : 'done'
+        })
+      } catch (e) {
+        throw e
+      }
     }
   }
 }
