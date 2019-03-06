@@ -4,7 +4,7 @@
     <v-toolbar-title><span>{{todosLength}} Todos :</span> <span class="ml-4">{{doneTodosLength}}</span> <v-icon>check</v-icon> <span class="ml-4 mr-1">{{notDoneTodosLength}}</span><v-icon>date_range</v-icon>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn icon @click="setDialog(true)">
+    <v-btn icon @click="openModal">
       <v-icon>add</v-icon>
     </v-btn>
   </v-toolbar>
@@ -34,7 +34,15 @@ export default {
   },
   methods: {
     ...mapActions('todo', ['createTodo']),
-    ...mapActions(['setDialog'])
+    ...mapActions(['setDialog']),
+    openModal() {
+      this.$store.dispatch('todo/setCurrentTodo', {
+        id: '',
+        value: '',
+        status: ''
+      })
+      this.setDialog(true)
+    }
   }
 }
 </script>
