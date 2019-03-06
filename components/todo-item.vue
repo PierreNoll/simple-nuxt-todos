@@ -4,13 +4,14 @@
     <v-list-tile-action @click.stop.prevent="updateStatus()">
       <v-checkbox v-model="todo.status" :readonly="true" false-value="not-done" true-value="done"></v-checkbox>
     </v-list-tile-action>
-
     <v-list-tile-content @click.stop.prevent="openUpdate">
       <span>{{todo.value}}</span>
     </v-list-tile-content>
+    <a>
     <v-list-tile-action @click="removeTodo(todo.id)">
       <v-icon color="red">delete</v-icon>
     </v-list-tile-action>
+    </a>
   </v-list-tile>
 </div>
 </template>
