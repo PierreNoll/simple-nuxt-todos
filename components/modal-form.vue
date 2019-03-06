@@ -9,7 +9,7 @@
         <v-container grid-list-md>
           <v-layout wrap>
             <v-flex xs12>
-              <v-text-field :value="currentTodo.value" @input="newTodo = $event" label="Que voulez-vous faire ?"></v-text-field>
+              <v-text-field :value="currentTodo.value" @input="newTodo = $event" label="Que voulez-vous faire ?" @keyup.enter="onSave"></v-text-field>
             </v-flex>
           </v-layout>
         </v-container>
